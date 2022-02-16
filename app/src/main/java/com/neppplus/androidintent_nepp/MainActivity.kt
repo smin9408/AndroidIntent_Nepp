@@ -36,9 +36,13 @@ class MainActivity : AppCompatActivity() {
 
         btnSendTo.setOnClickListener {
 
+            val inputContent = edtContent.text.toString()
+
             val inputPhone = edtPhoneNum.text.toString()
             val myUri = Uri.parse("smsto:${inputPhone}")
             val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+
+            myIntent.putExtra("sms_body", inputContent)
 
             startActivity(myIntent)
 
